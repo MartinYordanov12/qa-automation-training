@@ -1,1 +1,1 @@
-# qa-automation-training
+# selenium_training 
