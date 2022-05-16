@@ -9,7 +9,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import parser.JsonParser;
 import parser.NoSuchFileException;
 import shop.Cart;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -69,7 +68,6 @@ public class JsonParserTest {
         public void writeToFile() throws FileNotFoundException {
             cart = new Cart("cart1");
             String expectedResult = gson.toJson(cart);;
-
             jsonParser.writeToFile(cart);
 
             Cart jsonCartObject = gson.fromJson(new FileReader("src/main/resources/cart1.json"), Cart.class);

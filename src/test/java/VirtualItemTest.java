@@ -25,9 +25,7 @@ public class VirtualItemTest {
         virtualItemTest.setSizeOnDisk(2000d);
 
         String actualResult = virtualItemTest.toString();
-
         Assertions.assertEquals(expectedResult, actualResult);
-
         System.out.printf("Expected result = %s \n", expectedResult);
         System.out.printf("Actual result = %s", actualResult);
     }

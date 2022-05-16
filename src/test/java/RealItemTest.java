@@ -25,9 +25,7 @@ public class RealItemTest {
         realItemTest.setWeight(1580);
 
         String actualResult = realItemTest.toString();
-
         Assertions.assertEquals(expectedResults, actualResult);
-
         System.out.printf("Expected result = %s \n", expectedResults);
         System.out.printf("Actual result = %s", expectedResults);
     }
