@@ -1,12 +1,9 @@
-import com.google.gson.Gson;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import parser.JsonParser;
 import parser.NoSuchFileException;
 import shop.Cart;
 import java.io.File;
@@ -18,18 +15,7 @@ import java.nio.file.Path;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class JsonParserTest {
-    private static JsonParser jsonParser;
-    private static Cart cart;
-    private static Gson gson;
-
-    @BeforeAll
-    public static void initiateJsonParserObject() {
-        jsonParser = new JsonParser();
-        gson = new Gson();
-
-    }
-
+public class JsonParserTest extends BaseTest{
     @Nested
     class ExceptionTests {
         @ParameterizedTest
