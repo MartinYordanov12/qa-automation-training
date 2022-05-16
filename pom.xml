@@ -24,7 +24,6 @@
             </plugin>
         </plugins>
     </build>
-
     <dependencies>
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -47,6 +46,4 @@
             <version>1.0.2</version>
         </dependency>
     </dependencies>
-
-
 </project>

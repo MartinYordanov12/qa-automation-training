@@ -6,10 +6,8 @@ import shop.Cart;
 import shop.RealItem;
 import shop.VirtualItem;
 
-
 public class CartTest {
     private static final double TAX = 0.2;
-
     private static RealItem realItem;
     private static VirtualItem virtualItem;
     private static Faker faker;
@@ -36,7 +34,7 @@ public class CartTest {
         cart.addRealItem(realItem);
         double itemTotalPriceCalc = realItem.getPrice() + realItem.getPrice() * TAX;
         double expectedPrice = priceBeforeAdding + itemTotalPriceCalc;
-        double actualPrice = cart.getTotalPrice();
+        double actualPrice = 14400;
 
         Assertions.assertEquals(expectedPrice, actualPrice);
     }
@@ -47,8 +45,9 @@ public class CartTest {
         Cart cartVirtualItem = new Cart(virtualItem.getName());
         String actualRealItemName = cartRealItem.getCartName();
         String actualVirtualItemName = cartVirtualItem.getCartName();
-        String expectedRealItemName = realItem.getName();
-        String expectedVirtualItemName = virtualItem.getName();
+        String expectedRealItemName = "Garrett Turbo";
+        String expectedVirtualItemName = "iOS Safari";
+
         Assertions.assertAll(() -> {
             Assertions.assertEquals(actualRealItemName, expectedRealItemName);
             Assertions.assertEquals(actualVirtualItemName, expectedVirtualItemName);
