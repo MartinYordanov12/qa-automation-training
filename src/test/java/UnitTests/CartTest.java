@@ -21,16 +21,12 @@ public class CartTest extends BaseTest {
         String actualVirtualItemName = BaseTest.virtualItem.getName();
         String expectedRealItemName = "Garrett Turbo";
         String expectedVirtualItemName = "iOS Safari";
-        int expectedRealItemNameLenght = expectedRealItemName.length();
-        int expectedVirtualItemNameLenght = expectedVirtualItemName.length();
         Assertions.assertAll(() -> {
             Assertions.assertEquals(actualRealItemName, expectedRealItemName);
             Assertions.assertEquals(actualVirtualItemName, expectedVirtualItemName);
             Assertions.assertFalse(actualRealItemName.contains(expectedVirtualItemName),
                     "expectedVirtualItemName is not contains in actualRealItemName");
             Assertions.assertNotEquals(expectedRealItemName, expectedVirtualItemName);
-            //false-positive test
-            Assertions.assertTrue(expectedRealItemNameLenght == expectedVirtualItemNameLenght);
         });
     }
 }
