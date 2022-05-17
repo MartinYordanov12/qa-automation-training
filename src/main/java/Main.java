@@ -7,7 +7,6 @@ import shop.VirtualItem;
 import java.io.File;
 
 public class Main {
-
     public static void main(String[] args) {
         Cart andrewCart = new Cart("andrew-cart");
 

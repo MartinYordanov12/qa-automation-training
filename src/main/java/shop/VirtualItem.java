@@ -1,7 +1,6 @@
 package shop;
 
 public class VirtualItem extends Item {
-
     private double sizeOnDisk;
 
     public void setSizeOnDisk(double sizeOnDisk) {

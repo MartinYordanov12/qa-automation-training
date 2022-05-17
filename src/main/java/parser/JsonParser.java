@@ -2,20 +2,21 @@ package parser;
 
 import com.google.gson.Gson;
 import shop.Cart;
+
 import java.io.*;
 
 public class JsonParser implements Parser {
-
     private final Gson gson;
+
     public JsonParser() {
         gson = new Gson();
     }
+
     public void writeToFile(Cart cart) {
         try (FileWriter writer = new FileWriter("src/main/resources/" + cart.getCartName() + ".json")) {
             writer.write(gson.toJson(cart));
         } catch (IOException e) {
-            System.out.println("Such file was not found");
-            e.printStackTrace();
+            throw new RuntimeException(String.format("Such file can't be created %s", e));
         }
     }
 
@@ -25,9 +26,7 @@ public class JsonParser implements Parser {
         } catch (FileNotFoundException ex) {
             throw new NoSuchFileException(String.format("File %s.json not found!", file), ex);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(String.format("Such file was not found %s", e));
         }
-
-        return null;
     }
 }
