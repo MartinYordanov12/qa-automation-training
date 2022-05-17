@@ -14,6 +14,7 @@ public class JsonParser implements Parser {
         try (FileWriter writer = new FileWriter("src/main/resources/" + cart.getCartName() + ".json")) {
             writer.write(gson.toJson(cart));
         } catch (IOException e) {
+            System.out.println("Such file was not found");
             e.printStackTrace();
         }
     }
