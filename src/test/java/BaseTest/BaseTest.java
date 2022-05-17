@@ -1,3 +1,5 @@
+package BaseTest;
+
 import com.github.javafaker.Faker;
 import com.google.gson.Gson;
 import org.junit.jupiter.api.BeforeAll;

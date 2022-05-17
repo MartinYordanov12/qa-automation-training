@@ -1,3 +1,6 @@
+package UnitTests;
+
+import BaseTest.BaseTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Nested;
@@ -15,7 +18,7 @@ import java.nio.file.Path;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class JsonParserTest extends BaseTest{
+public class JsonParserTest extends BaseTest {
     @Nested
     class ExceptionTests {
         @ParameterizedTest
@@ -29,7 +32,7 @@ public class JsonParserTest extends BaseTest{
         })
         public void noSuchFileExceptionTest(String input) {
             assertThrows(NoSuchFileException.class, () -> {
-                jsonParser.readFromFile(new File(String.valueOf(input)));
+                BaseTest.jsonParser.readFromFile(new File(String.valueOf(input)));
             });
         }
 
@@ -38,7 +41,7 @@ public class JsonParserTest extends BaseTest{
         public void noSuchFileExceptionTestDisable() {
             File input = new File("src/main/resources/disable-cart.xml");
             assertThrows(NoSuchFileException.class, () -> {
-                jsonParser.readFromFile(input);
+                BaseTest.jsonParser.readFromFile(input);
             });
         }
 
@@ -52,12 +55,12 @@ public class JsonParserTest extends BaseTest{
 
         @Test
         public void writeToFile() throws FileNotFoundException {
-            cart = new Cart("cart1");
-            String expectedResult = gson.toJson(cart);;
-            jsonParser.writeToFile(cart);
+            BaseTest.cart = new Cart("expectedCart");
+            String expectedResult = BaseTest.gson.toJson(BaseTest.cart);;
+            BaseTest.jsonParser.writeToFile(BaseTest.cart);
 
-            Cart jsonCartObject = gson.fromJson(new FileReader("src/main/resources/cart1.json"), Cart.class);
-            String actualResult = gson.toJson(jsonCartObject);
+            Cart jsonCartObject = BaseTest.gson.fromJson(new FileReader("src/main/resources/expectedCart.json"), Cart.class);
+            String actualResult = BaseTest.gson.toJson(jsonCartObject);
             Assertions.assertEquals(expectedResult,actualResult);
         }
     }
