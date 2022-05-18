@@ -4,7 +4,7 @@ import BaseTest.BaseTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class VirtualItemTest extends BaseTest {
+public class VirtualItemTest  extends BaseTest {
     @Test
     public void createVirtualItemTest() {
         String expectedResult = String

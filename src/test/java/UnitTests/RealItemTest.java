@@ -4,7 +4,7 @@ import BaseTest.BaseTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class RealItemTest extends BaseTest {
+public class RealItemTest  extends BaseTest {
     @Test
     public void createRealItemTest() {
         String expectedResults = String

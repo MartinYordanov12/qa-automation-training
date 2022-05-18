@@ -3,7 +3,7 @@ package shop;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cart {
+public class  Cart {
     private static final double TAX = 0.2;
     private final String cartName;
     private List<RealItem> realItems;

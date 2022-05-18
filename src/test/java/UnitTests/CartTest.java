@@ -4,7 +4,7 @@ import BaseTest.BaseTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class CartTest extends BaseTest {
+public class CartTest  extends BaseTest {
     private static final double TAX = 0.2;
 
     @Test

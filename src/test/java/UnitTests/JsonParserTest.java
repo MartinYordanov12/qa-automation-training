@@ -18,7 +18,7 @@ import java.nio.file.Path;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class JsonParserTest extends BaseTest {
+public class JsonParserTest  extends BaseTest {
     @Nested
     class ExceptionTests {
         @ParameterizedTest
