@@ -1,4 +1,4 @@
-package BaseTest;
+package UnitTests;
 
 import com.github.javafaker.Faker;
 import com.google.gson.Gson;
@@ -8,7 +8,7 @@ import shop.Cart;
 import shop.RealItem;
 import shop.VirtualItem;
 
-public abstract class  BaseTest {
+public class BaseTest {
     protected static RealItem realItem;
     protected static VirtualItem virtualItem;
     protected static Faker faker;

@@ -1,6 +1,6 @@
 package shop;
 
-public class  RealItem extends Item {
+public class RealItem extends Item {
     private double weight;
 
     public void setWeight(double weight) {

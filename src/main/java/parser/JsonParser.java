@@ -6,6 +6,7 @@ import shop.Cart;
 import java.io.*;
 
 public class JsonParser implements Parser {
+    private static final String WRITER_PATH = "src/main/resources/";
     private final Gson gson;
 
     public JsonParser() {
@@ -13,7 +14,7 @@ public class JsonParser implements Parser {
     }
 
     public void writeToFile(Cart cart) {
-        try (FileWriter writer = new FileWriter("src/main/resources/" + cart.getCartName() + ".json")) {
+        try (FileWriter writer = new FileWriter(WRITER_PATH + cart.getCartName() + ".json")) {
             writer.write(gson.toJson(cart));
         } catch (IOException e) {
             throw new RuntimeException(String.format("Such file can't be created %s", e));

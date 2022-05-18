@@ -1,10 +1,9 @@
 package UnitTests;
 
-import BaseTest.BaseTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class VirtualItemTest  extends BaseTest {
+public class VirtualItemTest extends BaseTest {
     @Test
     public void createVirtualItemTest() {
         String expectedResult = String
@@ -17,7 +16,5 @@ public class VirtualItemTest  extends BaseTest {
 
         String actualResult = BaseTest.virtualItem.toString();
         Assertions.assertEquals(expectedResult, actualResult);
-        System.out.printf("Expected result = %s \n", expectedResult);
-        System.out.printf("Actual result = %s", actualResult);
     }
 }

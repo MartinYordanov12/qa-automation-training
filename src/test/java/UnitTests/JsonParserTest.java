@@ -1,6 +1,5 @@
 package UnitTests;
 
-import BaseTest.BaseTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Nested;
@@ -18,7 +17,13 @@ import java.nio.file.Path;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class JsonParserTest  extends BaseTest {
+public class JsonParserTest extends BaseTest {
+    private static final String EXPECTED_STRING = "{\"cartName\":\"andrew-cart\",\"realItems\":[{\"weight\":1560.0,\"name\":\"Audi\",\"price\":32026.9}],\"virtualItems\":[{\"sizeOnDisk\":20000.0,\"name\":\"Windows\",\"price\":11.0}],\"total\":38445.479999999996}";
+    private static final String ANDREW_CART_FILE_PATH = "src/main/resources/andrew-cart.json";
+    private static final String EXPECTED_CART_FILE_PATH = "src/main/resources/expectedCart.json";
+    private static final String DISABLE_CART_FILE_PATH = "src/main/resources/disable-cart.xml";
+    private static final String EXPECTED_CART = "expectedCart";
+
     @Nested
     class ExceptionTests {
         @ParameterizedTest
@@ -39,7 +44,7 @@ public class JsonParserTest  extends BaseTest {
         @Disabled("No such exception test disabled")
         @Test
         public void noSuchFileExceptionTestDisable() {
-            File input = new File("src/main/resources/disable-cart.xml");
+            File input = new File(DISABLE_CART_FILE_PATH);
             assertThrows(NoSuchFileException.class, () -> {
                 BaseTest.jsonParser.readFromFile(input);
             });
@@ -48,18 +53,19 @@ public class JsonParserTest  extends BaseTest {
         @Test
         public void readFromFile() throws IOException {
 
-            Path fileName = Path.of("src/main/resources/andrew-cart.json");
+            Path fileName = Path.of(ANDREW_CART_FILE_PATH);
             String str = Files.readString(fileName);
-            Assertions.assertTrue(str.contains("Audi") && str.contains("Windows"));
+
+            Assertions.assertEquals(str, EXPECTED_STRING);
         }
 
         @Test
         public void writeToFile() throws FileNotFoundException {
-            BaseTest.cart = new Cart("expectedCart");
+            BaseTest.cart = new Cart(EXPECTED_CART);
             String expectedResult = BaseTest.gson.toJson(BaseTest.cart);;
             BaseTest.jsonParser.writeToFile(BaseTest.cart);
 
-            Cart jsonCartObject = BaseTest.gson.fromJson(new FileReader("src/main/resources/expectedCart.json"), Cart.class);
+            Cart jsonCartObject = BaseTest.gson.fromJson(new FileReader(EXPECTED_CART_FILE_PATH), Cart.class);
             String actualResult = BaseTest.gson.toJson(jsonCartObject);
             Assertions.assertEquals(expectedResult,actualResult);
         }
