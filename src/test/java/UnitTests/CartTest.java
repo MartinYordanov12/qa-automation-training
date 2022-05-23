@@ -2,32 +2,32 @@ package UnitTests;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import shop.Cart;
+import shop.RealItem;
 
 public class CartTest extends BaseTest {
-    private static final double TAX = 0.2;
-    private static final String GARRETT_TURBO = "Garrett Turbo";
-    private static final String IOS_SAFARI = "iOS Safari";
-
     @Test
     void getTotalPriceTest() {
-        double expectedPrice = BaseTest.realItem.getPrice() + BaseTest.realItem.getPrice() * TAX;
-        double actualPrice = 14400;
+        RealItem realItem = new RealItem();
+        realItem.setPrice(12000);
+        cart.addRealItem(realItem);
+        double actualPrice = cart.getTotalPrice();
+        double expectedPrice = 14400;
 
-        Assertions.assertEquals(expectedPrice, actualPrice);
+        Assertions.assertEquals(expectedPrice, actualPrice, "Expected price is not equal to actual price");
     }
 
     @Test
-    void getCartRealItemAndVirtualNameTest() {
-        String actualRealItemName = BaseTest.realItem.getName();
-        String actualVirtualItemName = BaseTest.virtualItem.getName();
-        String expectedRealItemName = GARRETT_TURBO;
-        String expectedVirtualItemName = IOS_SAFARI;
+    void getCartNameTest() {
+        Cart cart1 = new Cart("cart1");
+        Cart cart2 = new Cart("cart2");
+
         Assertions.assertAll(() -> {
-            Assertions.assertEquals(actualRealItemName, expectedRealItemName);
-            Assertions.assertEquals(actualVirtualItemName, expectedVirtualItemName);
-            Assertions.assertFalse(actualRealItemName.contains(expectedVirtualItemName),
+            Assertions.assertEquals("cart1",cart1.getCartName());
+            Assertions.assertEquals("cart2",cart2.getCartName());
+            Assertions.assertFalse(cart1.getCartName().contains(cart2.getCartName()),
                     "expectedVirtualItemName is not contains in actualRealItemName");
-            Assertions.assertNotEquals(expectedRealItemName, expectedVirtualItemName);
+            Assertions.assertNotEquals(cart1.getCartName(),cart2.getCartName());
         });
     }
 }

@@ -14,7 +14,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class JsonParserTest extends BaseTest {
@@ -52,7 +51,6 @@ public class JsonParserTest extends BaseTest {
 
         @Test
         public void readFromFile() throws IOException {
-
             Path fileName = Path.of(ANDREW_CART_FILE_PATH);
             String str = Files.readString(fileName);
 
@@ -64,9 +62,9 @@ public class JsonParserTest extends BaseTest {
             BaseTest.cart = new Cart(EXPECTED_CART_FILE_NAME);
             String expectedResult = BaseTest.gson.toJson(BaseTest.cart);;
             BaseTest.jsonParser.writeToFile(BaseTest.cart);
-
             Cart jsonCartObject = BaseTest.gson.fromJson(new FileReader(EXPECTED_CART_FILE_PATH), Cart.class);
             String actualResult = BaseTest.gson.toJson(jsonCartObject);
+
             Assertions.assertEquals(expectedResult,actualResult);
         }
     }
