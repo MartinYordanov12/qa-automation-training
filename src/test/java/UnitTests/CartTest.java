@@ -23,11 +23,11 @@ public class CartTest extends BaseTest {
         Cart cart2 = new Cart("cart2");
 
         Assertions.assertAll(() -> {
-            Assertions.assertEquals("cart1",cart1.getCartName());
-            Assertions.assertEquals("cart2",cart2.getCartName());
+            Assertions.assertEquals("cart1",cart1.getCartName(),"The cart1 names are not equals");
+            Assertions.assertEquals("cart2",cart2.getCartName(), "The cart2 names are not equals");
             Assertions.assertFalse(cart1.getCartName().contains(cart2.getCartName()),
                     "expectedVirtualItemName is not contains in actualRealItemName");
-            Assertions.assertNotEquals(cart1.getCartName(),cart2.getCartName());
+            Assertions.assertNotEquals(cart1.getCartName(),cart2.getCartName(), "The expected name and the actual name are equal");
         });
     }
 }

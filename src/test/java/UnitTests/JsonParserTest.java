@@ -54,7 +54,7 @@ public class JsonParserTest extends BaseTest {
             Path fileName = Path.of(ANDREW_CART_FILE_PATH);
             String str = Files.readString(fileName);
 
-            Assertions.assertEquals(str, ANDREW_CART_EXPECTED_STRING);
+            Assertions.assertEquals(str, ANDREW_CART_EXPECTED_STRING, "The file was not readed");
         }
 
         @Test
@@ -65,7 +65,7 @@ public class JsonParserTest extends BaseTest {
             Cart jsonCartObject = BaseTest.gson.fromJson(new FileReader(EXPECTED_CART_FILE_PATH), Cart.class);
             String actualResult = BaseTest.gson.toJson(jsonCartObject);
 
-            Assertions.assertEquals(expectedResult,actualResult);
+            Assertions.assertEquals(expectedResult,actualResult,"The file was not written");
         }
     }
 }

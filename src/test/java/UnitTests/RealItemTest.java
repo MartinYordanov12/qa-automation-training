@@ -15,6 +15,6 @@ public class RealItemTest extends BaseTest {
                 );
 
         String actualResult = BaseTest.realItem.toString();
-        Assertions.assertEquals(expectedResults, actualResult);
+        Assertions.assertEquals(expectedResults, actualResult,"The real item was not created");
     }
 }

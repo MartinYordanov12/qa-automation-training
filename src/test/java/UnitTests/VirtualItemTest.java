@@ -15,6 +15,6 @@ public class VirtualItemTest extends BaseTest {
                 );
 
         String actualResult = BaseTest.virtualItem.toString();
-        Assertions.assertEquals(expectedResult, actualResult);
+        Assertions.assertEquals(expectedResult, actualResult, "The virtual item was not created");
     }
 }
