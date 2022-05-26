@@ -22,6 +22,7 @@ public class CartTest extends BaseTest {
         Cart cart1 = new Cart("cart1");
         Cart cart2 = new Cart("cart2");
 
+
         Assertions.assertAll(() -> {
             Assertions.assertEquals("cart1",cart1.getCartName(),"The cart1 names are not equals");
             Assertions.assertEquals("cart2",cart2.getCartName(), "The cart2 names are not equals");
