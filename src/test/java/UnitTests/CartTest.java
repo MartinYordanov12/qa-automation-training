@@ -76,7 +76,7 @@ public class CartTest extends BaseTest {
         Cart cart = new Cart("yourCart");
         cart.addVirtualItem(virtualItem);
         cart.deleteVirtualItem(virtualItem);
-        Assertions.assertEquals(0.0,cart.getTotalPrice(),"Virtual item is not deleted from yourCart");
 
+        Assertions.assertEquals(0.0,cart.getTotalPrice(),"Virtual item is not deleted from yourCart");
     }
 }
