@@ -50,10 +50,6 @@ public class JsonParserTest extends BaseTest {
 
         @Test
         public void readFromFile() {
-            /*Cart cart = jsonParser.readFromFile(new File("src/main/resources/andrew-cart.json"));
-            String actualResult = new Gson().toJson(cart);
-
-            Assertions.assertEquals(ANDREW_CART_EXPECTED_STRING, actualResult, "The file was not read");*/
             Cart cart = jsonParser.readFromFile(new File("src/main/resources/andrew-cart.json"));
             String actualResult = cart.toString();
             Assertions.assertEquals(ANDREW_CART_EXPECTED_STRING, actualResult, "The file was not read");
