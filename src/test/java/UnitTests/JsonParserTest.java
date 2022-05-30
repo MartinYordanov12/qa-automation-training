@@ -11,12 +11,16 @@ import parser.NoSuchFileException;
 import shop.Cart;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class JsonParserTest extends BaseTest {
     private static final String ANDREW_CART_EXPECTED_STRING = "{\"cartName\":\"andrew-cart\",\"realItems\":[{\"weight\":1560.0,\"name\":\"Audi\",\"price\":32026.9}],\"virtualItems\":[{\"sizeOnDisk\":20000.0,\"name\":\"Windows\",\"price\":11.0}],\"total\":38445.479999999996}";
     private static final String DISABLE_CART_FILE_PATH = "src/main/resources/disable-cart.xml";
+    private static final String EXPECTED_RESULT_EXPECTED_CART = "{\"cartName\":\"expectedCart\",\"realItems\":[],\"virtualItems\":[],\"total\":0.0}";
 
     @Nested
     class ExceptionTests {
@@ -46,19 +50,20 @@ public class JsonParserTest extends BaseTest {
 
         @Test
         public void readFromFile() {
-            Cart cart = jsonParser.readFromFile(new File("src/main/resources/andrew-cart.json"));
+            /*Cart cart = jsonParser.readFromFile(new File("src/main/resources/andrew-cart.json"));
             String actualResult = new Gson().toJson(cart);
 
+            Assertions.assertEquals(ANDREW_CART_EXPECTED_STRING, actualResult, "The file was not read");*/
+            Cart cart = jsonParser.readFromFile(new File("src/main/resources/andrew-cart.json"));
+            String actualResult = cart.toString();
             Assertions.assertEquals(ANDREW_CART_EXPECTED_STRING, actualResult, "The file was not read");
         }
 
         @Test
-        public void writeToFile() {
-            Cart cart = jsonParser.readFromFile(new File("src/main/resources/expectedCart.json"));
-            String actualResult = new Gson().toJson(cart);
-            String expectedResult = "{\"cartName\":\"expectedCart\",\"realItems\":[],\"virtualItems\":[],\"total\":0.0}";
-
-            Assertions.assertEquals(expectedResult, actualResult, "The file was written");
+        public void writeToFile() throws IOException {
+            jsonParser.writeToFile(cart);
+            String actualResult = Files.readString(Path.of("src/main/resources/expectedCart.json"));
+            Assertions.assertEquals(EXPECTED_RESULT_EXPECTED_CART, actualResult,"The file was not written");
         }
 
     }
