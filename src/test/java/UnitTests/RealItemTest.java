@@ -1,7 +1,7 @@
 package UnitTests;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class RealItemTest extends BaseTest {
     @Test
@@ -15,6 +15,6 @@ public class RealItemTest extends BaseTest {
                 );
 
         String actualResult = BaseTest.realItem.toString();
-        Assertions.assertEquals(expectedResults, actualResult,"The real item was not created");
+        Assert.assertEquals(expectedResults, actualResult,"The real item was not created");
     }
 }
