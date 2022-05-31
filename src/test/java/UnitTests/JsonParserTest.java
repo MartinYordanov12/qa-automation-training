@@ -18,7 +18,7 @@ import java.nio.file.Path;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class JsonParserTest extends BaseTest {
-    private static final String ANDREW_CART_EXPECTED_STRING = "{\"cartName\":\"andrew-cart\",\"realItems\":[{\"weight\":1560.0,\"name\":\"Audi\",\"price\":32026.9}],\"virtualItems\":[{\"sizeOnDisk\":20000.0,\"name\":\"Windows\",\"price\":11.0}],\"total\":38445.479999999996}";
+    private static final String ANDREW_CART_EXPECTED_STRING = "andrew-cart";
     private static final String DISABLE_CART_FILE_PATH = "src/main/resources/disable-cart.xml";
     private static final String EXPECTED_RESULT_EXPECTED_CART = "{\"cartName\":\"expectedCart\",\"realItems\":[],\"virtualItems\":[],\"total\":0.0}";
 
@@ -50,9 +50,8 @@ public class JsonParserTest extends BaseTest {
 
         @Test
         public void readFromFile() {
-            Cart cart = jsonParser.readFromFile(new File("src/main/resources/andrew-cart.json"));
-            String actualResult = cart.toString();
-            Assertions.assertEquals(ANDREW_CART_EXPECTED_STRING, actualResult, "The file was not read");
+            Cart actualResult = jsonParser.readFromFile(new File("src/main/resources/andrew-cart.json"));
+            Assertions.assertEquals(ANDREW_CART_EXPECTED_STRING, actualResult.getCartName(), "The file was not read");
         }
 
         @Test
