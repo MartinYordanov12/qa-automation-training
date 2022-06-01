@@ -27,6 +27,7 @@ public class CartTest extends BaseTest {
         Assert.assertFalse(cart1.getCartName().contains(cart2.getCartName()),
                 "expectedVirtualItemName is not contains in actualRealItemName");
         Assert.assertNotEquals(cart1.getCartName(), cart2.getCartName(), "The expected name and the actual name are equal");
+        softAssert.assertAll();
     }
 
     @Test

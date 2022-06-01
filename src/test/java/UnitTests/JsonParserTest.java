@@ -21,7 +21,7 @@ public class JsonParserTest extends BaseTest {
             groups = "exceptions",
             expectedExceptions = NoSuchFileException.class,
             dataProvider = "ExceptionProvider",
-            dataProviderClass = DataProviders.class
+            dataProviderClass = DataSource.class
     )
     public void noSuchFileExceptionTest(String input) {
         jsonParser.readFromFile(new File(String.valueOf(input)));

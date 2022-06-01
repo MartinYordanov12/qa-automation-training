@@ -3,6 +3,7 @@ package UnitTests;
 import com.github.javafaker.Faker;
 import com.google.gson.Gson;
 import org.testng.annotations.BeforeClass;
+import org.testng.asserts.SoftAssert;
 import parser.JsonParser;
 import shop.Cart;
 import shop.RealItem;
@@ -15,6 +16,7 @@ public class BaseTest {
     protected static Cart cart;
     protected static JsonParser jsonParser;
     protected static Gson gson;
+    protected static SoftAssert softAssert;
 
     @BeforeClass
     void setupItem() {
@@ -23,6 +25,7 @@ public class BaseTest {
         cart = new Cart(faker.name().firstName());
         jsonParser = new JsonParser();
         realItem = new RealItem();
+        softAssert = new SoftAssert();
         realItem.setName("Garrett Turbo");
         realItem.setPrice(12000);
         realItem.setWeight(8.5);

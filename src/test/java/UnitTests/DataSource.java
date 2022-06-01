@@ -1,7 +1,7 @@
 package UnitTests;
 import org.testng.annotations.DataProvider;
 
-public class DataProviders {
+public class DataSource {
 
     @DataProvider(name = "ExceptionProvider")
     public static Object[][] exceptionData() {
