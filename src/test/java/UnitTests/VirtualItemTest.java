@@ -8,13 +8,13 @@ public class VirtualItemTest extends BaseTest {
     public void createVirtualItemTest() {
         String expectedResult = String
                 .format("Class: %s; Name: %s; Price: %s; Size on disk: %s",
-                        BaseTest.virtualItem.getClass(),
+                        virtualItem.getClass(),
                         "iOS Safari",
                         1.5,
                         130.5d
                 );
 
-        String actualResult = BaseTest.virtualItem.toString();
+        String actualResult = virtualItem.toString();
         Assert.assertEquals(expectedResult, actualResult, "The virtual item was not created");
     }
 }

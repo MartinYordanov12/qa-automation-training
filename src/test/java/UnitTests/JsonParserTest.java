@@ -4,7 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import parser.NoSuchFileException;
 import shop.Cart;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -32,7 +31,7 @@ public class JsonParserTest extends BaseTest {
     public void noSuchFileExceptionTestDisable() {
         File input = new File(DISABLE_CART_FILE_PATH);
         assertThrows(NoSuchFileException.class, () -> {
-            BaseTest.jsonParser.readFromFile(input);
+            jsonParser.readFromFile(input);
         });
     }
 
