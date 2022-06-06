@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="Json Functionality Test">
+        <classes>
+
+            <class name="UnitTests.JsonParserTest">
+                <methods>
+                    <include name="noSuchFileExceptionTest"/>
+                    <include name="noSuchFileExceptionTestDisable"/>
+                    <include name="readFromFile"/>
+                    <include name="writeToFile"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
