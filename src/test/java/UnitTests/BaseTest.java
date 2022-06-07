@@ -2,22 +2,21 @@ package UnitTests;
 
 import com.github.javafaker.Faker;
 import com.google.gson.Gson;
-import org.testng.annotations.BeforeMethod;
+import org.junit.jupiter.api.BeforeEach;
 import parser.JsonParser;
 import shop.Cart;
 import shop.RealItem;
 import shop.VirtualItem;
 
 public class BaseTest {
-    protected Gson gson;
-    protected Faker faker;
-    protected Cart cart;
-    protected JsonParser jsonParser;
-    protected RealItem realItem;
-    protected VirtualItem virtualItem;
+    protected static RealItem realItem;
+    protected static VirtualItem virtualItem;
+    protected static Faker faker;
+    protected static Cart cart;
+    protected static JsonParser jsonParser;
+    protected static Gson gson;
 
-
-    @BeforeMethod
+    @BeforeEach
     void setupItem() {
         gson = new Gson();
         faker = new Faker();
