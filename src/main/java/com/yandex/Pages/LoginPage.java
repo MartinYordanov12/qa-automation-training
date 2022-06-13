@@ -15,12 +15,15 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public LoginPage fillUserNameField(String username) {
+    public LoginPage fillLoginFields(String username,String password) {
         fillField(USER_NAME_FIELD, username);
+        clickElement(LOGIN_BUTTON);
+        fillField(PASSWORD_FIELD, password);
+        clickElement(LOGIN_BUTTON);
         return this;
     }
 
-    public LoginPage fillPasswordField(String password) {
+    /*public LoginPage fillPasswordField(String password) {
         fillField(PASSWORD_FIELD, password);
         return this;
     }
@@ -33,7 +36,7 @@ public class LoginPage extends BasePage {
     public EmailPage clickPasswordFormLoginButton() {
         clickElement(LOGIN_BUTTON);
         return new EmailPage(driver);
-    }
+    }*/
 
     public HomePage clickOnUserNameFormBackButton() {
         clickElement(PREVIOUS_STEP_BUTTON);

@@ -14,7 +14,7 @@ public class EmailPage extends BasePage {
     }
 
     public boolean isEmailPageOpen() {
-        return driver.findElement(EMAIL_ICON).isDisplayed();
+        return driver.findElement(DROPDOWN_MENU).isDisplayed();
     }
 
     public WebElement getEmailPageIcon() {
