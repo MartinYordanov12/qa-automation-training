@@ -8,6 +8,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.concurrent.TimeUnit;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginTest extends BaseTest {
@@ -26,7 +29,9 @@ public class LoginTest extends BaseTest {
                 .fillLoginFields(username, password);
 
         WebDriverWait webDriverWait = new WebDriverWait(driver, 10);
+        //explicit wait
         webDriverWait.until(ExpectedConditions.visibilityOf(emailPage.getEmailPageIcon()));
         assertTrue(emailPage.isEmailPageOpen(username));
+
     }
 }
