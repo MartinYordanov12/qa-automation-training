@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginTest extends BaseTest {
 
+
     @DisplayName("Login in mail.yandex.com and validate page open")
     @ParameterizedTest
     @ValueSource(strings = {"yordanovm Dieselron", "yordanovm123 Dieselron"})

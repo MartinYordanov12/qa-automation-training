@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class EmailPage extends BasePage {
+
     private static String username = "//div[@class = 'PSHeader-User']/descendant::span[text() = '%s'][1]";
     private static final By EMAIL_ICON = By.className("PSHeaderIcon_Mail");
     private static final By DROPDOWN_MENU = By.xpath(username);
