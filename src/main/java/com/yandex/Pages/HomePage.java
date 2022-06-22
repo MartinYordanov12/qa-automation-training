@@ -24,6 +24,6 @@ public class HomePage extends BasePage {
     }
 
     public boolean isHomePagePresented() {
-       return isElementPresented(HOME_PAGE_HEADER_TEXT);
+        return isElementPresented(HOME_PAGE_HEADER_TEXT);
     }
 }

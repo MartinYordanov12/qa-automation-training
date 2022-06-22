@@ -9,7 +9,8 @@ public class LoginPage extends BasePage {
     private final By LOGIN_BUTTON = By.id("passp:sign-in");
     private final By LOGIN_WITH_TEXT = By.className("AuthSocialBlock-title");
     private final By PREVIOUS_STEP_BUTTON = By.className("PreviousStepButton");
-
+    private final By CURRENT_USERNAME = By.className("CurrentAccount");
+    private final By ADD_ACCOUNT_BUTTON = By.className("AddAccountButton-text");
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -20,6 +21,13 @@ public class LoginPage extends BasePage {
         clickElement(LOGIN_BUTTON);
         fillField(PASSWORD_FIELD, password);
         clickElement(LOGIN_BUTTON);
+        return this;
+    }
+
+    public LoginPage changeCurrentAccount(){
+        clickElement(CURRENT_USERNAME);
+        isElementPresented(ADD_ACCOUNT_BUTTON);
+        clickElement(ADD_ACCOUNT_BUTTON);
         return this;
     }
 
