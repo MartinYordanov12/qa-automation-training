@@ -4,28 +4,27 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+public class AlertPage extends BasePage {
 
-public class AlertPage extends BasePage{
-
-    public static final String BASE_URL = "https://demo.seleniumeasy.com/javascript-alert-box-demo.html";
-    public static final By ALERT_CLICK_BOX = By.cssSelector("[onclick='myAlertFunction\\(\\)']");
-    public static final By CONFIRM_ALERT_BOX = By.xpath("//p[@id=\"confirm-demo\"]//preceding-sibling::button");
-    public static final By CONFIRM_RESULT = By.cssSelector("p#confirm-demo");
-    public static final By PROMPT_ALERT_BOX = By.xpath("//p[@id=\"prompt-demo\"]//preceding-sibling::button");
-    public static final By PROMPT_RESULT = By.cssSelector("p#prompt-demo");
-    public static final By ALERT_BOX_RESULT = By.cssSelector("[class] .panel-primary:nth-child(4) .panel-body");
+    private static final String BASE_URL = "https://demo.seleniumeasy.com/javascript-alert-box-demo.html";
+    private static final By ALERT_CLICK_BOX = By.cssSelector("[onclick='myAlertFunction\\(\\)']");
+    private static final By CONFIRM_ALERT_BOX = By.xpath("//p[@id=\"confirm-demo\"]//preceding-sibling::button");
+    private static final By CONFIRM_RESULT = By.cssSelector("p#confirm-demo");
+    private static final By PROMPT_ALERT_BOX = By.xpath("//p[@id=\"prompt-demo\"]//preceding-sibling::button");
+    private static final By PROMPT_RESULT = By.cssSelector("p#prompt-demo");
+    private static final By ALERT_BOX_RESULT = By.cssSelector("[class] .panel-primary:nth-child(4) .panel-body");
     private static String INPUT = "Martin";
 
     public AlertPage(WebDriver driver) {
         super(driver);
     }
 
-    public AlertPage navigateToAlertPage(){
+    public AlertPage navigateToAlertPage() {
         navigateTo(BASE_URL);
         return this;
     }
 
-    public boolean javaScriptAlertBox(){
+    public boolean javaScriptAlertBox() {
         driver.findElement(ALERT_CLICK_BOX).click();
         Alert alert = driver.switchTo().alert();
         alert.accept();
@@ -39,17 +38,17 @@ public class AlertPage extends BasePage{
 
     }
 
-    public boolean javaScriptConfirmBoxAccept(){
+    public boolean javaScriptConfirmBoxAccept() {
         driver.findElement(CONFIRM_ALERT_BOX).click();
         Alert alert = driver.switchTo().alert();
         alert.accept();
-        String actualMessage =driver.findElement(CONFIRM_RESULT).getText();
+        String actualMessage = driver.findElement(CONFIRM_RESULT).getText();
         System.out.println(actualMessage);
         String expectedMessage = "You pressed OK!";
         return actualMessage.contains(expectedMessage);
     }
 
-    public boolean javaScriptConfirmBoxDismiss(){
+    public boolean javaScriptConfirmBoxDismiss() {
         driver.findElement(CONFIRM_ALERT_BOX).click();
         Alert alert = driver.switchTo().alert();
         alert.dismiss();
@@ -58,7 +57,7 @@ public class AlertPage extends BasePage{
         return actualMessage.contains(expectedMessage);
     }
 
-    public boolean javaScriptAlertBoxNameCheck(){
+    public boolean javaScriptAlertBoxNameCheck() {
         driver.findElement(PROMPT_ALERT_BOX).click();
         Alert promptAlert = driver.switchTo().alert();
         promptAlert.sendKeys(INPUT);
@@ -68,7 +67,6 @@ public class AlertPage extends BasePage{
         System.out.println(actualMessage);
         return actualMessage.contains(expectedMessage);
     }
-
 
 
 }

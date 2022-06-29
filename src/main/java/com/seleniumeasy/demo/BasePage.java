@@ -12,23 +12,23 @@ public class BasePage {
         this.driver = driver;
     }
 
-    void navigateTo(String URL){
+    void navigateTo(String URL) {
         driver.navigate().to(URL);
     }
 
-    void clickElement(By element){
+    void clickElement(By element) {
         driver.findElement(element).click();
     }
 
-    void fillField(String name, By by){
+    void fillField(String name, By by) {
         driver.findElement(by).sendKeys(name);
     }
 
-    public boolean isElementPresented(By element){
-        try{
+    public boolean isElementPresented(By element) {
+        try {
             driver.findElement(element);
             return true;
-        }catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             return false;
         }
     }

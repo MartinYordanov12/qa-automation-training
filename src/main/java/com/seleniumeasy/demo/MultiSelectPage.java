@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-public class MultiSelectPage extends BasePage{
+public class MultiSelectPage extends BasePage {
     private static final String BASE_URL = "https://demo.seleniumeasy.com/basic-select-dropdown-demo.html";
     private static final By DROPDOWN = By.id("multi-select");
     private static final By GET_ALL_SELECTED_BUTTON = By.id("printAll");
@@ -23,16 +23,16 @@ public class MultiSelectPage extends BasePage{
         super(driver);
     }
 
-    public MultiSelectPage navigateToSelectMultipleDropdownOptions(){
+    public MultiSelectPage navigateToSelectMultipleDropdownOptions() {
         navigateTo(BASE_URL);
         return this;
     }
 
-    public boolean selectThreeRandomOptions(){
+    public boolean selectThreeRandomOptions() {
         Select select = new Select(driver.findElement(DROPDOWN));
         List<WebElement> webElements = select.getOptions();
         List<Integer> randomNumber = random
-                .ints(0,webElements.size() - 1)
+                .ints(0, webElements.size() - 1)
                 .distinct()
                 .limit(3)
                 .boxed()
@@ -55,7 +55,7 @@ public class MultiSelectPage extends BasePage{
         System.out.println("-------------------");
         actualOptions.forEach(System.out::println);
 
-        if(actualOptions.equals(selectedOptions)){
+        if (actualOptions.equals(selectedOptions)) {
             return true;
         }
         return false;

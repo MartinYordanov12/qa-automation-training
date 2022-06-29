@@ -29,11 +29,12 @@ public class MultiSelectTest extends BaseTest {
         AlertPage alertPage = new AlertPage(driver);
         alertPage.navigateToAlertPage();
         assertAll(() -> assertTrue(alertPage.javaScriptAlertBox(), "Ok button is not clicked"),
-        () -> assertTrue(alertPage.javaScriptConfirmBoxAccept(), "Ok button is not clicked"),
-        () -> assertTrue(alertPage.javaScriptConfirmBoxDismiss(), "Cancel button is not clicked"),
-        () ->assertTrue(alertPage.javaScriptAlertBoxNameCheck(), "Name is not entered"));
+                () -> assertTrue(alertPage.javaScriptConfirmBoxAccept(), "Ok button is not clicked"),
+                () -> assertTrue(alertPage.javaScriptConfirmBoxDismiss(), "Cancel button is not clicked"),
+                () -> assertTrue(alertPage.javaScriptAlertBoxNameCheck(), "Name is not entered"));
 
     }
+
     @Test
     void refreshTest() throws InterruptedException {
         RefreshPage refreshPage = new RefreshPage(driver);
@@ -46,12 +47,12 @@ public class MultiSelectTest extends BaseTest {
     }
 
     @Test
-    void tableTest(){
+    void tableTest() {
         TablePage tablePage = new TablePage(driver);
         tablePage.navigateToBaseURL();
         tablePage.selectOptionFromDropDown("10");
         List<Person> allPeopleWithAgeAndSalary = tablePage.getAllPeopleWithAgeAndSalary(30, 100.000);
-        for (int i =0; i <= allPeopleWithAgeAndSalary.size() - 1; i++){
+        for (int i = 0; i <= allPeopleWithAgeAndSalary.size() - 1; i++) {
             Person index = allPeopleWithAgeAndSalary.get(i);
             System.out.println(index);
         }

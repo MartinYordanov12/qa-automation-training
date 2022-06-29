@@ -17,7 +17,7 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public LoginPage fillLoginFields(String username,String password) {
+    public LoginPage fillLoginFields(String username, String password) {
         fillField(USER_NAME_FIELD, username);
         clickElement(LOGIN_BUTTON);
         fillField(PASSWORD_FIELD, password);
@@ -25,7 +25,7 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    public LoginPage changeCurrentAccount(){
+    public LoginPage changeCurrentAccount() {
         clickElement(CURRENT_USERNAME);
         isElementPresented(ADD_ACCOUNT_BUTTON);
         clickElement(ADD_ACCOUNT_BUTTON);

@@ -12,7 +12,7 @@ public class BaseTest {
     protected WebDriver driver;
 
     @BeforeEach
-    public void setup(){
+    public void setup() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -20,7 +20,7 @@ public class BaseTest {
     }
 
     @AfterEach
-    public void teardown(){
+    public void teardown() {
         driver.quit();
     }
 }

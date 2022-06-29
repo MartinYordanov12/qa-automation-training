@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 public class HomePage extends BasePage {
     private static final By LOGIN_BUTTON = By.cssSelector(".HeadBanner-Button-Enter.with-shadow");
     private static final String BASE_URL = "https://mail.yandex.com";
-    private static final By HOME_PAGE_HEADER_TEXT =By.xpath("//div[text() = 'Sincerely yours' ]");
+    private static final By HOME_PAGE_HEADER_TEXT = By.xpath("//div[text() = 'Sincerely yours' ]");
 
     public HomePage(WebDriver driver) {
         super(driver);

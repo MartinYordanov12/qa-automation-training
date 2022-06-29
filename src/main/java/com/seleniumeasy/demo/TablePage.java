@@ -64,4 +64,3 @@ public class TablePage extends BasePage {
         return result;
     }
 }
-
