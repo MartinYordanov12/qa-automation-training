@@ -11,36 +11,41 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SeleniumEasyTests extends BaseTest {
+
+    private static final By DROPDOWN = By.id("multi-select");
 
     @Test
     @DisplayName("Select Multiple Options from Dropdown")
     void selectMultipleOptionsTest() {
         driver.navigate().to("https://demo.seleniumeasy.com/basic-select-dropdown-demo.html");
+
+        Select multiSelect = new Select(driver.findElement(DROPDOWN));
         Random random = new Random();
-        Select select = new Select(driver.findElement(By.id("multi-select")));
-        List<WebElement> webElements = select.getOptions();
-        List<Integer> randomNumber = random
-                .ints(0, webElements.size() - 1)
-                .distinct()
+        List<Integer> number = random
+                .ints(0, 7)
                 .limit(3)
                 .boxed()
                 .collect(Collectors.toList());
-        List<String> selectedOptions = randomNumber.stream().map(index -> webElements.get(index).getText()).sorted().collect(Collectors.toList());
-        List<String> actualOptions = new ArrayList<>();
-        actualOptions.add(webElements.get(randomNumber.get(0)).getText());
-        actualOptions.add(webElements.get(randomNumber.get(1)).getText());
-        actualOptions.add(webElements.get(randomNumber.get(2)).getText());
-        Collections.sort(actualOptions);
-        assertEquals(actualOptions, selectedOptions);
 
+        List<String> expectedList = new ArrayList<>();
+        if (multiSelect.isMultiple()) {
+            for (Integer index : number) {
+                multiSelect.selectByIndex(index);
+                Select select = new Select(driver.findElement(DROPDOWN));
+                expectedList = select.getAllSelectedOptions().stream().map(WebElement::getText).collect(Collectors.toList());
+            }
+        }
+
+        List<String> actualList = multiSelect.getAllSelectedOptions().stream().map(WebElement::getText).collect(Collectors.toList());
+        assertTrue(actualList.containsAll(expectedList));
     }
 
     @Test
