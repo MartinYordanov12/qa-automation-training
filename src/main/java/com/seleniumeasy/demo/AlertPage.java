@@ -7,66 +7,44 @@ import org.openqa.selenium.WebDriver;
 public class AlertPage extends BasePage {
 
     private static final String BASE_URL = "https://demo.seleniumeasy.com/javascript-alert-box-demo.html";
-    private static final By ALERT_CLICK_BOX = By.cssSelector("[onclick='myAlertFunction\\(\\)']");
     private static final By CONFIRM_ALERT_BOX = By.xpath("//p[@id=\"confirm-demo\"]//preceding-sibling::button");
     private static final By CONFIRM_RESULT = By.cssSelector("p#confirm-demo");
     private static final By PROMPT_ALERT_BOX = By.xpath("//p[@id=\"prompt-demo\"]//preceding-sibling::button");
     private static final By PROMPT_RESULT = By.cssSelector("p#prompt-demo");
-    private static final By ALERT_BOX_RESULT = By.cssSelector("[class] .panel-primary:nth-child(4) .panel-body");
     private static String INPUT = "Martin";
 
     public AlertPage(WebDriver driver) {
         super(driver);
     }
 
-    public AlertPage navigateToAlertPage() {
+    public void navigateToAlertPage() {
         navigateTo(BASE_URL);
-        return this;
     }
 
-    public boolean javaScriptAlertBox() {
-        driver.findElement(ALERT_CLICK_BOX).click();
-        Alert alert = driver.switchTo().alert();
-        alert.accept();
-        String actualMessage = driver.findElement(ALERT_BOX_RESULT).getText();
-        System.out.println(actualMessage);
-        String expectedMessage = "When an alert box pops up, user have to click \"OK\" button to proceed.\n" +
-                "\n" +
-                "Click the button to display an alert box:\n" +
-                "Click me!";
-        return actualMessage.contains(expectedMessage);
-
-    }
-
-    public boolean javaScriptConfirmBoxAccept() {
+    public void clickAcceptButtonJavaScriptConfirmBox() {
         driver.findElement(CONFIRM_ALERT_BOX).click();
         Alert alert = driver.switchTo().alert();
         alert.accept();
-        String actualMessage = driver.findElement(CONFIRM_RESULT).getText();
-        System.out.println(actualMessage);
-        String expectedMessage = "You pressed OK!";
-        return actualMessage.contains(expectedMessage);
     }
 
-    public boolean javaScriptConfirmBoxDismiss() {
+    public String getTextMessageFromJavaScriptConfirmBox() {
+        return driver.findElement(CONFIRM_RESULT).getText();
+    }
+
+    public void clickDismissButtonJavaScriptConfirmBox() {
         driver.findElement(CONFIRM_ALERT_BOX).click();
         Alert alert = driver.switchTo().alert();
         alert.dismiss();
-        String actualMessage = driver.findElement(CONFIRM_RESULT).getText();
-        String expectedMessage = "You pressed Cancel!";
-        return actualMessage.contains(expectedMessage);
     }
 
-    public boolean javaScriptAlertBoxNameCheck() {
+    public void enterNameAndClickOnOKButtonJavaScriptAlertBox() {
         driver.findElement(PROMPT_ALERT_BOX).click();
         Alert promptAlert = driver.switchTo().alert();
         promptAlert.sendKeys(INPUT);
         promptAlert.accept();
-        String actualMessage = driver.findElement(PROMPT_RESULT).getText();
-        String expectedMessage = String.format("You have entered '%s' !", INPUT);
-        System.out.println(actualMessage);
-        return actualMessage.contains(expectedMessage);
     }
 
-
+    public String getNameJavaScriptAlertBox() {
+        return driver.findElement(PROMPT_RESULT).getText();
+    }
 }

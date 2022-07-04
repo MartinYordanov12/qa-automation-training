@@ -3,30 +3,24 @@ package com.yandex.Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class EmailPage extends BasePage {
 
-    @FindBy(className = "PSHeaderIcon_Mail")
-    WebElement EMAIL_ICON1;
-
-    private static String username = "//div[@class = 'PSHeader-User']/descendant::span[text() = '%s'][1]";
     private static final By EMAIL_ICON = By.className("PSHeaderIcon_Mail");
 
-
-    private static final By DROPDOWN_MENU = By.xpath(username);
+    private static final By USERNAME = By.cssSelector(".user-account_has-subname_yes span.user-account__name");
     private static final By LOGOUT_BUTTON = By.xpath("//span[text() = 'Log out' ]");
-    private static final By USERNAME_DROPDOWN = By.className("user-account__name");
+    private static final By USER_ICON = By.className("user-account__name");
+    private static final By USERNAME_ICON = By.cssSelector(".user-account_left-name");
 
     public EmailPage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver, this);
     }
 
-    public boolean isEmailPageOpen(String name) {
-        username = String.format(username, name);
-        return driver.findElement(USERNAME_DROPDOWN).isDisplayed();
+    public boolean isEmailPageOpen(String userName) {
+        String actualResult = driver.findElement(USERNAME).getText();
+        System.out.println(actualResult);
+        return driver.findElement(USERNAME).getText().contains(userName);
     }
 
     public WebElement getEmailPageIcon() {
@@ -34,12 +28,12 @@ public class EmailPage extends BasePage {
     }
 
     public EmailPage clickOnDropdownMenu() {
-        clickElement(DROPDOWN_MENU);
+        clickElement(USERNAME_ICON);
         return this;
     }
 
     public LoginPage clickLogOutButton() {
-        clickElement(USERNAME_DROPDOWN);
+        clickElement(USER_ICON);
         clickElement(LOGOUT_BUTTON);
         return new LoginPage(driver);
     }
