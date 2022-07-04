@@ -1,14 +1,10 @@
 package com.yandex.Tests;
 
-import com.yandex.Pages.EmailPage;
-import com.yandex.Pages.HomePage;
+import com.yandex.pages.EmailPage;
+import com.yandex.pages.HomePage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -25,10 +21,6 @@ public class LoginTest extends BaseTest {
                 .clickOnLoginButton()
                 .fillLoginFields(username, password);
 
-        WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(15).toSeconds(), Duration.ofMillis(50).toMillis());
-        //explicit wait
-
-        webDriverWait.until(ExpectedConditions.visibilityOf(emailPage.getEmailPageIcon()));
         emailPage.clickOnDropdownMenu();
         assertTrue(emailPage.isEmailPageOpen(username));
     }

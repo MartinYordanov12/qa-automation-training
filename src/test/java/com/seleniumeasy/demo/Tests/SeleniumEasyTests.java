@@ -58,7 +58,7 @@ public class SeleniumEasyTests extends BaseTest {
     }
 
     @Test
-    void dismissJavaScriptConfirmBoxTest() {
+    void clickOnCancelButtonOfTheJavaScriptConfirmBoxTest() {
         AlertPage alertPage = new AlertPage(driver);
         alertPage.navigateToAlertPage();
         alertPage.clickDismissButtonJavaScriptConfirmBox();
@@ -66,7 +66,7 @@ public class SeleniumEasyTests extends BaseTest {
     }
 
     @Test
-    void enterNameJavaScriptAlertBoxTest() {
+    void checkTheEqualityOfTheInputName() {
         AlertPage alertPage = new AlertPage(driver);
         alertPage.navigateToAlertPage();
         alertPage.enterNameAndClickOnOKButtonJavaScriptAlertBox();
@@ -76,7 +76,7 @@ public class SeleniumEasyTests extends BaseTest {
 
 
     @Test
-    void refreshTest() {
+    void waitForLoadBarHasValueFiftyPercent() {
         RefreshPage refreshPage = new RefreshPage(driver);
         refreshPage.navigateToRefreshPage();
         refreshPage.clickDownloadButton();
