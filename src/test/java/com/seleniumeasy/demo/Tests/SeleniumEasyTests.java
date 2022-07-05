@@ -20,6 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class SeleniumEasyTests extends BaseTest {
 
     private static final By DROPDOWN = By.id("multi-select");
+    private static final String TEST_WORD = "Martin";
 
     @Test
     @DisplayName("Select Multiple Options from Dropdown")
@@ -39,8 +40,8 @@ public class SeleniumEasyTests extends BaseTest {
     void acceptJavaScriptConfirmBoxTest() {
         AlertPage alertPage = new AlertPage(driver);
         alertPage.navigateToAlertPage();
-        alertPage.switchToAlertBox();
-        alertPage.acceptJavaScriptConfirmBox();
+        alertPage.openAlert();
+        alertPage.acceptAlert();
         String actualMessage = alertPage.getTextMessageFromJavaScriptConfirmBox();
         assertEquals("You pressed OK!", actualMessage);
     }
@@ -49,17 +50,27 @@ public class SeleniumEasyTests extends BaseTest {
     void dismissJavaScriptConfirmBoxTest() {
         AlertPage alertPage = new AlertPage(driver);
         alertPage.navigateToAlertPage();
-        alertPage.switchToAlertBox();
-        alertPage.dismissJavaScriptConfirmBox();
+        alertPage.openAlert();
+        alertPage.dismissAlert();
         assertEquals("You pressed Cancel!", alertPage.getTextMessageFromJavaScriptConfirmBox());
     }
 
-    @Test
+    /*@Test
     void enterNameJavaScriptAlertBoxTest() {
         AlertPage alertPage = new AlertPage(driver);
         alertPage.navigateToAlertPage();
         alertPage.acceptJavaScriptAlertBox();
         String actualResult = alertPage.getNameJavaScriptAlertBox();
+        assertEquals("You have entered 'Martin' !", actualResult);
+    }*/
+    @Test
+    void enterNameJavaScriptAlertBoxTest() {
+        AlertPage alertPage = new AlertPage(driver);
+        alertPage.navigateToAlertPage();
+        alertPage.openPromptAlert();
+        alertPage.fillAlertTextField(TEST_WORD);
+        alertPage.acceptPromptAlert();
+        String actualResult = alertPage.getPromptAlertBoxText();
         assertEquals("You have entered 'Martin' !", actualResult);
     }
 
@@ -69,7 +80,7 @@ public class SeleniumEasyTests extends BaseTest {
         RefreshPage refreshPage = new RefreshPage(driver);
         refreshPage.navigateToRefreshPage();
         refreshPage.clickDownloadButton();
-        refreshPage.checkPageOnFiftyPercentOfLoadBar();
+        refreshPage.waitForLoadBarHasValueFiftyPercent();
         driver.navigate().refresh();
     }
 
