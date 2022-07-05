@@ -12,8 +12,8 @@ public class LoginTest extends BaseTest {
 
     @DisplayName("Login in mail.yandex.com and validate page open")
     @ParameterizedTest
-    @CsvSource({"yordanovm, Dieselron", "yordanovm123, Dieselron"})
-    void loginTest(String username, String password) {
+    @CsvSource({"yordanovm, Dieselron"})
+    void loginTest(String username, String password) throws InterruptedException {
         HomePage homePage = new HomePage(driver);
         EmailPage emailPage = new EmailPage(driver);
         homePage
@@ -23,5 +23,7 @@ public class LoginTest extends BaseTest {
 
         emailPage.clickOnDropdownMenu();
         assertTrue(emailPage.isEmailPageOpen(username));
+        emailPage.clickOnLogOutButton();
+        assertTrue(homePage.isLoginButtonPresented());
     }
 }

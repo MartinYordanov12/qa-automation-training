@@ -1,6 +1,7 @@
 package com.yandex.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.WebDriver;
 
 public class HomePage extends BasePage {
@@ -20,4 +21,14 @@ public class HomePage extends BasePage {
         navigateTo(BASE_URL);
         return this;
     }
+
+    public boolean isLoginButtonPresented() {
+        try {
+            driver.findElement(LOGIN_BUTTON);
+            return true;
+        } catch (ElementNotVisibleException ignored) {
+            return false;
+        }
+    }
+
 }

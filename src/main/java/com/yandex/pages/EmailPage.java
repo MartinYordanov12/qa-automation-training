@@ -7,6 +7,7 @@ public class EmailPage extends BasePage {
 
     private static final By USER_ACCOUNT_NAME = By.cssSelector(".user-account_left-name .user-account__name");
     private static final By USERNAME_ICON = By.cssSelector(".user-account_left-name");
+    private static final By LOGOUT_BUTTON = By.cssSelector("a[aria-label='Log out']");
 
     public EmailPage(WebDriver driver) {
         super(driver);
@@ -18,5 +19,9 @@ public class EmailPage extends BasePage {
 
     public void clickOnDropdownMenu() {
         clickElement(USERNAME_ICON);
+    }
+
+    public void clickOnLogOutButton(){
+        driver.findElement(LOGOUT_BUTTON).click();
     }
 }
