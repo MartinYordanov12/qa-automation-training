@@ -10,7 +10,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -27,49 +26,39 @@ public class SeleniumEasyTests extends BaseTest {
     void selectMultipleOptionsTest() {
         driver.navigate().to("https://demo.seleniumeasy.com/basic-select-dropdown-demo.html");
 
-        Select multiSelect = new Select(driver.findElement(DROPDOWN));
-        Random random = new Random();
-        List<Integer> number = random
-                .ints(0, 7)
-                .limit(3)
-                .boxed()
-                .collect(Collectors.toList());
+        Select select = new Select(driver.findElement(DROPDOWN));
+        List<String> expectedStates = new Random().ints(3, 0, select.getOptions().size()).boxed()
+                .map(i -> select.getOptions().get(i).getText()).collect(Collectors.toList());
+        expectedStates.forEach(select::selectByValue);
+        List<String> actualStates = select.getAllSelectedOptions().stream().map(WebElement::getText).collect(Collectors.toList());
 
-        List<String> expectedList = new ArrayList<>();
-        if (multiSelect.isMultiple()) {
-            for (Integer index : number) {
-                multiSelect.selectByIndex(index);
-                Select select = new Select(driver.findElement(DROPDOWN));
-                expectedList = select.getAllSelectedOptions().stream().map(WebElement::getText).collect(Collectors.toList());
-            }
-        }
-
-        List<String> actualList = multiSelect.getAllSelectedOptions().stream().map(WebElement::getText).collect(Collectors.toList());
-        assertTrue(actualList.containsAll(expectedList));
+        assertTrue(expectedStates.containsAll(actualStates));
     }
 
     @Test
     void acceptJavaScriptConfirmBoxTest() {
         AlertPage alertPage = new AlertPage(driver);
         alertPage.navigateToAlertPage();
-        alertPage.clickAcceptButtonJavaScriptConfirmBox();
+        alertPage.switchToAlertBox();
+        alertPage.acceptJavaScriptConfirmBox();
         String actualMessage = alertPage.getTextMessageFromJavaScriptConfirmBox();
         assertEquals("You pressed OK!", actualMessage);
     }
 
     @Test
-    void clickOnCancelButtonOfTheJavaScriptConfirmBoxTest() {
+    void dismissJavaScriptConfirmBoxTest() {
         AlertPage alertPage = new AlertPage(driver);
         alertPage.navigateToAlertPage();
-        alertPage.clickDismissButtonJavaScriptConfirmBox();
+        alertPage.switchToAlertBox();
+        alertPage.dismissJavaScriptConfirmBox();
         assertEquals("You pressed Cancel!", alertPage.getTextMessageFromJavaScriptConfirmBox());
     }
 
     @Test
-    void checkTheEqualityOfTheInputName() {
+    void enterNameJavaScriptAlertBoxTest() {
         AlertPage alertPage = new AlertPage(driver);
         alertPage.navigateToAlertPage();
-        alertPage.enterNameAndClickOnOKButtonJavaScriptAlertBox();
+        alertPage.acceptJavaScriptAlertBox();
         String actualResult = alertPage.getNameJavaScriptAlertBox();
         assertEquals("You have entered 'Martin' !", actualResult);
     }

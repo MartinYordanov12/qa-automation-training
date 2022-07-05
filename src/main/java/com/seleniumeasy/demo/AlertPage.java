@@ -21,23 +21,26 @@ public class AlertPage extends BasePage {
         navigateTo(BASE_URL);
     }
 
-    public void clickAcceptButtonJavaScriptConfirmBox() {
+    public void switchToAlertBox() {
         driver.findElement(CONFIRM_ALERT_BOX).click();
+
+    }
+
+    public void acceptJavaScriptConfirmBox() {
         Alert alert = driver.switchTo().alert();
         alert.accept();
+    }
+
+    public void dismissJavaScriptConfirmBox() {
+        Alert alert = driver.switchTo().alert();
+        alert.dismiss();
     }
 
     public String getTextMessageFromJavaScriptConfirmBox() {
         return driver.findElement(CONFIRM_RESULT).getText();
     }
 
-    public void clickDismissButtonJavaScriptConfirmBox() {
-        driver.findElement(CONFIRM_ALERT_BOX).click();
-        Alert alert = driver.switchTo().alert();
-        alert.dismiss();
-    }
-
-    public void enterNameAndClickOnOKButtonJavaScriptAlertBox() {
+    public void acceptJavaScriptAlertBox() {
         driver.findElement(PROMPT_ALERT_BOX).click();
         Alert promptAlert = driver.switchTo().alert();
         promptAlert.sendKeys(INPUT);
