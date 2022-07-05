@@ -1,25 +1,25 @@
 package com.yandex.Tests;
 
 import com.yandex.pages.DriverSingleton;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
-    protected WebDriver driver;
+    protected static WebDriver driver;
 
-    @BeforeEach
-    public void setup() {
+    @BeforeAll
+    static void setup() {
         DriverSingleton driverSingleton = DriverSingleton.getInstance();
         driver = driverSingleton.getDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
-    @AfterEach
-    public void teardown() {
+    @AfterAll
+    static void teardown() {
         DriverSingleton.getInstance().closeDriver();
     }
 }
