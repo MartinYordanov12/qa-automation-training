@@ -1,11 +1,12 @@
-package com.yandex.Pages;
+package com.seleniumeasy.demo;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
-abstract class BasePage {
+public class BasePage {
     WebDriver driver;
+
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -19,8 +20,8 @@ abstract class BasePage {
         driver.findElement(element).click();
     }
 
-    void fillField(By by, String text) {
-        driver.findElement(by).sendKeys(text);
+    void fillField(String name, By by) {
+        driver.findElement(by).sendKeys(name);
     }
 
     public boolean isElementPresented(By element) {
@@ -30,6 +31,7 @@ abstract class BasePage {
         } catch (NoSuchElementException e) {
             return false;
         }
-
     }
+
+
 }
