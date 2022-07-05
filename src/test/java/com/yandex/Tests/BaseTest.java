@@ -1,5 +1,6 @@
 package com.yandex.Tests;
 
+import com.yandex.pages.DriverSingleton;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,14 +14,14 @@ public class BaseTest {
 
     @BeforeEach
     public void setup() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        DriverSingleton driverSingleton = DriverSingleton.getInstance();
+        driver = driverSingleton.getDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
     @AfterEach
     public void teardown() {
-        driver.quit();
+        DriverSingleton.getInstance().closeDriver();
     }
 }

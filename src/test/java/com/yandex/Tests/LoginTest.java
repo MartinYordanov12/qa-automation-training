@@ -13,7 +13,7 @@ public class LoginTest extends BaseTest {
     @DisplayName("Login in mail.yandex.com and validate page open")
     @ParameterizedTest
     @CsvSource({"yordanovm, Dieselron"})
-    void loginTest(String username, String password) throws InterruptedException {
+    void loginTest(String username, String password) {
         HomePage homePage = new HomePage(driver);
         EmailPage emailPage = new EmailPage(driver);
         homePage
