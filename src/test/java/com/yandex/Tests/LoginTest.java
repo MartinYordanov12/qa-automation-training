@@ -9,6 +9,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginTest extends BaseTest {
+
+    private static final String USERNAME = "yordanovm";
+    private static final String PASSWORD = "Dieselron";
     private EmailPage emailPage;
     private HomePage homePage;
 
@@ -19,7 +22,7 @@ public class LoginTest extends BaseTest {
         homePage
                 .navigateToHomePage()
                 .clickOnLoginButton()
-                .login();
+                .login(USERNAME, PASSWORD);
     }
 
     @Test

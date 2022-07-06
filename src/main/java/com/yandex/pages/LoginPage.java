@@ -7,9 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends BasePage {
 
-    private static final String username = "yordanovm";
-    private static final String password = "Dieselron";
-
     @FindBy(id = "passp-field-login")
     private WebElement user_name_field;
     @FindBy(id = "passp-field-passwd")
@@ -22,7 +19,7 @@ public class LoginPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public LoginPage login() {
+    public LoginPage login(String username, String password) {
         user_name_field.sendKeys(username);
         login_button.click();
         password_field.sendKeys(password);
