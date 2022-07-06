@@ -9,18 +9,22 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginTest extends BaseTest {
+
+    private static final String USERNAME = "yordanovm";
+    private static final String PASSWORD = "Dieselron";
     private EmailPage emailPage;
     private HomePage homePage;
 
     @BeforeEach
-    void login(){
+    void login() {
         homePage = new HomePage(driver);
         emailPage = new EmailPage(driver);
         homePage
                 .navigateToHomePage()
                 .clickOnLoginButton()
-                .login();
+                .login(USERNAME, PASSWORD);
     }
+
     @Test
     @DisplayName("Login in mail.yandex.com and validate page open")
     void loginTest() {
