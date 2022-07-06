@@ -29,7 +29,7 @@ public class LoginTest extends BaseTest {
     @DisplayName("Login in mail.yandex.com and validate page open")
     void loginTest() {
         emailPage.clickOnDropdownMenu();
-        assertTrue(emailPage.isEmailPageOpen());
+        assertTrue(emailPage.isEmailPageOpen(USERNAME));
     }
 
     @Test

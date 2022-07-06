@@ -7,8 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class EmailPage extends BasePage {
 
-    private static final String USERNAME = "yordanovm";
-
     @FindBy(css = ".user-account_left-name .user-account__name")
     private WebElement user_account_name;
 
@@ -23,7 +21,7 @@ public class EmailPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public boolean isEmailPageOpen() {
+    public boolean isEmailPageOpen(String USERNAME) {
         return user_account_name.getText().contains(USERNAME);
     }
 
