@@ -9,8 +9,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginTest extends BaseTest {
-    public EmailPage emailPage;
-    public HomePage homePage;
+    private EmailPage emailPage;
+    private HomePage homePage;
 
     @BeforeEach
     void login() {
