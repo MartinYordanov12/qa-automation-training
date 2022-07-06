@@ -9,8 +9,10 @@ public class LoginPage extends BasePage {
 
     @FindBy(id = "passp-field-login")
     private WebElement user_name_field;
+
     @FindBy(id = "passp-field-passwd")
     private WebElement password_field;
+
     @FindBy(id = "passp:sign-in")
     private WebElement login_button;
 

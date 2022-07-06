@@ -11,8 +11,10 @@ public class EmailPage extends BasePage {
 
     @FindBy(css = ".user-account_left-name .user-account__name")
     private WebElement user_account_name;
+
     @FindBy(css = ".user-account_left-name")
     private WebElement username_icon;
+
     @FindBy(css = "a[aria-label='Log out'] span[class='menu__text']")
     private WebElement logout_button;
 
