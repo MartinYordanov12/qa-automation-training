@@ -8,29 +8,24 @@ import org.openqa.selenium.support.PageFactory;
 
 public class EmailPage extends BasePage {
 
+    private static final By USER_ACCOUNT_NAME = By.cssSelector(".user-account_left-name .user-account__name");
+    private static final By USERNAME_ICON = By.cssSelector(".user-account_left-name");
+    private static final By LOGOUT_BUTTON = By.cssSelector("a[aria-label='Log out'] span[class='menu__text']");
+    private static final String USERNAME = "yordanovm";
+
     public EmailPage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = ".user-account_left-name .user-account__name")
-    private WebElement USER_ACCOUNT_NAME;
-
-    @FindBy(css = ".user-account_left-name")
-    private WebElement USERNAME_ICON;
-
-    @FindBy(css = "a[aria-label='Log out']")
-    private WebElement LOGOUT_BUTTON;
-
-    public boolean isEmailPageOpen(String userName) {
-        return driver.findElement((By) USER_ACCOUNT_NAME).getText().contains(userName);
+    public boolean isEmailPageOpen() {
+        return driver.findElement(USER_ACCOUNT_NAME).getText().contains(USERNAME);
     }
 
     public void clickOnDropdownMenu() {
-        clickElement((By) USERNAME_ICON);
+        clickElement(USERNAME_ICON);
     }
 
-    public void clickOnLogOutButton() {
-        driver.findElement((By) LOGOUT_BUTTON).click();
+    public void clickOnLogOutButton(){
+        driver.findElement(LOGOUT_BUTTON).click();
     }
 }

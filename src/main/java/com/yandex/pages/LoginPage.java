@@ -8,25 +8,23 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends BasePage {
 
+    private static final By USER_NAME_FIELD = By.id("passp-field-login");
+    private static final By PASSWORD_FIELD = By.id("passp-field-passwd");
+    private static final By LOGIN_BUTTON = By.id("passp:sign-in");
+    private static final String username = "yordanovm";
+    private static final String password = "Dieselron";
+
+
     public LoginPage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver, this);
     }
 
-    @FindBy(id = "passp-field-login")
-    private WebElement USER_NAME_FIELD;
-
-    @FindBy(id = "passp-field-passwd")
-    private WebElement PASSWORD_FIELD;
-
-    @FindBy(id = "passp:sign-in")
-    private WebElement LOGIN_BUTTON;
-
-    public LoginPage fillLoginFields(String username, String password) {
-        fillField((By) USER_NAME_FIELD, username);
-        clickElement((By) LOGIN_BUTTON);
-        fillField((By) PASSWORD_FIELD, password);
-        clickElement((By) LOGIN_BUTTON);
+    public LoginPage login() {
+        fillField(USER_NAME_FIELD, username);
+        clickElement(LOGIN_BUTTON);
+        fillField(PASSWORD_FIELD, password);
+        clickElement(LOGIN_BUTTON);
         return this;
     }
+
 }
