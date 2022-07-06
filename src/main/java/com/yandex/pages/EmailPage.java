@@ -14,7 +14,7 @@ public class EmailPage extends BasePage {
         super(driver);
     }
 
-    public boolean isEmailPageOpen() {
+    public boolean isEmailPageOpen(String USERNAME) {
         return driver.findElement(USER_ACCOUNT_NAME).getText().contains(USERNAME);
     }
 
