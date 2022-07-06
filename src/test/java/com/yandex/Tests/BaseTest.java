@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
-    protected static WebDriver driver;
+    protected static  WebDriver driver;
 
     @BeforeEach
     void setup() {
