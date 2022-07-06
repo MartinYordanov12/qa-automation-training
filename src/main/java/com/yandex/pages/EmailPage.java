@@ -21,8 +21,8 @@ public class EmailPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public boolean isEmailPageOpen(String USERNAME) {
-        return user_account_name.getText().contains(USERNAME);
+    public boolean isEmailPageOpen(String username) {
+        return user_account_name.getText().contains(username);
     }
 
     public void clickOnDropdownMenu() {
