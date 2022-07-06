@@ -2,7 +2,9 @@ package com.yandex.Tests;
 
 import com.yandex.pages.DriverSingleton;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -10,8 +12,8 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest {
     protected static WebDriver driver;
 
-    @BeforeAll
-    static void setup() {
+    @BeforeEach
+    void setup() {
         DriverSingleton driverSingleton = DriverSingleton.getInstance();
         driver = driverSingleton.getDriver();
         driver.manage().window().maximize();

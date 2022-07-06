@@ -6,8 +6,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class DriverSingleton {
 
-    private static DriverSingleton instance = null;
-    private WebDriver driver;
+    private static DriverSingleton browserInstance = null;
+    private final WebDriver driver;
 
     private DriverSingleton() {
         WebDriverManager.chromedriver().setup();
@@ -19,14 +19,14 @@ public class DriverSingleton {
     }
 
     public static DriverSingleton getInstance(){
-        if (instance ==null){
-            instance = new DriverSingleton();
+        if (browserInstance ==null){
+            browserInstance = new DriverSingleton();
         }
-        return instance;
+        return browserInstance;
     }
 
     public void closeDriver() {
-        instance = null;
+        browserInstance = null;
         driver.close();
     }
 }
