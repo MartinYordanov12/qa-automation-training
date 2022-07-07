@@ -32,8 +32,4 @@ public class EmailPage extends BasePage {
     public void clickOnLogOutButton() {
         logout_button.click();
     }
-
-    public void clickOnLogOutButton(){
-        driver.findElement(LOGOUT_BUTTON).click();
-    }
 }
