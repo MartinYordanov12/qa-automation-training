@@ -28,6 +28,6 @@ public class HomePage extends BasePage {
     }
 
     public boolean isLoginButtonPresented() {
-        return login_button.isDisplayed();
+return login_button.isDisplayed();
     }
 }

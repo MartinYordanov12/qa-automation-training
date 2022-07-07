@@ -22,7 +22,7 @@ public class EmailPage extends BasePage {
     }
 
     public boolean isEmailPageOpen(String username) {
-        return user_account_name.getText().contains(username);
+    return user_account_name.getText().contains(username);
     }
 
     public void clickOnDropdownMenu() {
@@ -31,5 +31,9 @@ public class EmailPage extends BasePage {
 
     public void clickOnLogOutButton() {
         logout_button.click();
+    }
+
+    public void clickOnLogOutButton(){
+        driver.findElement(LOGOUT_BUTTON).click();
     }
 }
