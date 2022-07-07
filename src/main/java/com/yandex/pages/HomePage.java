@@ -40,10 +40,10 @@ public class HomePage extends BasePage {
     public void makeScreenShot(){
         File screenshotAs = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try {
-            FileUtils.copyFile(screenshotAs, new File("src/main/" +
-                    "ScreenshotsTaken/Screenshot.png"));
+            FileUtils.copyFile(screenshotAs, new File("src/main/resources/screenShots/" +
+                    "Screenshot.png"));
         } catch (IOException e){
-            e.printStackTrace();
+            System.out.println("screenshot failed:" + e.getMessage());
         }
     }
 }
