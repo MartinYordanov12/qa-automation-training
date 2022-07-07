@@ -1,23 +1,31 @@
 package com.yandex.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends BasePage {
 
-    private static final By USER_NAME_FIELD = By.id("passp-field-login");
-    private static final By PASSWORD_FIELD = By.id("passp-field-passwd");
-    private static final By LOGIN_BUTTON = By.id("passp:sign-in");
+    @FindBy(id = "passp-field-login")
+    private WebElement user_name_field;
+
+    @FindBy(id = "passp-field-passwd")
+    private WebElement password_field;
+
+    @FindBy(id = "passp:sign-in")
+    private WebElement login_button;
 
     public LoginPage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver, this);
     }
 
     public LoginPage login(String username, String password) {
-        fillField(USER_NAME_FIELD, username);
-        clickElement(LOGIN_BUTTON);
-        fillField(PASSWORD_FIELD, password);
-        clickElement(LOGIN_BUTTON);
+        user_name_field.sendKeys(username);
+        login_button.click();
+        password_field.sendKeys(password);
+        login_button.click();
         return this;
     }
 }

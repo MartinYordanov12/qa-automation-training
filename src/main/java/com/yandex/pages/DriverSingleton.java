@@ -18,8 +18,9 @@ public class DriverSingleton {
         return driver;
     }
 
-    public static DriverSingleton getInstance(){
-        if (browserInstance ==null){
+
+    public static DriverSingleton getInstance() {
+        if (browserInstance == null) {
             browserInstance = new DriverSingleton();
         }
         return browserInstance;
