@@ -1,9 +1,15 @@
 package com.yandex.pages;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.io.File;
+import java.io.IOException;
 
 public class HomePage extends BasePage {
 
@@ -28,6 +34,16 @@ public class HomePage extends BasePage {
     }
 
     public boolean isLoginButtonPresented() {
-return login_button.isDisplayed();
+        return login_button.isDisplayed();
+    }
+
+    public void makeScreenShot(){
+        File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        try {
+            FileUtils.copyFile(screenshot, new File("src/main/resources/screenShots/" +
+                    "screenshot.png"));
+        } catch (IOException e){
+            System.out.println("screenshot failed:" + e.getMessage());
+        }
     }
 }

@@ -37,6 +37,7 @@ public class LoginTest extends BaseTest {
     void logOut() {
         emailPage.clickOnDropdownMenu();
         emailPage.clickOnLogOutButton();
+        homePage.makeScreenShot();
         assertTrue(homePage.isLoginButtonPresented());
     }
 }
