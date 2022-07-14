@@ -11,8 +11,8 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
     protected static WebDriver driver;
-    String browserName;
-    String browserVersion;
+    protected String browserName;
+    protected String browserVersion;
 
     @BeforeEach
     void setup() {
