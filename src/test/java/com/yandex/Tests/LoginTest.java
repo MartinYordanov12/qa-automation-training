@@ -57,6 +57,8 @@ public class LoginTest extends BaseTest {
     void logOut() {
         emailPage.clickOnDropdownMenu();
         emailPage.clickOnLogOutButton();
+        Allure.addAttachment("Browser name", browserName);
+        Allure.addAttachment("Browser version", browserVersion);
         Allure.addAttachment("Yandex mail image",
                 new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
         Assertions.assertEquals("Google", driver.getTitle());
