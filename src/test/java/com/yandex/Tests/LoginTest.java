@@ -12,10 +12,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-
-import java.io.ByteArrayInputStream;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -42,6 +39,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
+    @ExtendWith(TestWatcherResult.class)
     @Story("User tries to login with valid credentials")
     @Description("Valid login Test with valid username and password")
     @AllureId("1")
@@ -49,9 +47,11 @@ public class LoginTest extends BaseTest {
     void loginTest() {
         emailPage.clickOnDropdownMenu();
         assertTrue(emailPage.isEmailPageOpen(USERNAME));
+        currentScreenShot = makeScreenShotOnFailureTest();
     }
 
     @Test
+    @ExtendWith(TestWatcherResult.class)
     @Story("User tries to logout")
     @Description("Click on logout button and verify that the user is logout")
     @AllureId("2")
@@ -60,8 +60,9 @@ public class LoginTest extends BaseTest {
         emailPage.clickOnDropdownMenu();
         emailPage.clickOnLogOutButton();
 
-        Allure.addAttachment("Yandex mail image",
-                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+        /*Allure.addAttachment("Yandex mail image",
+                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));*/
         Assertions.assertEquals("Google", driver.getTitle());
+        currentScreenShot = makeScreenShotOnFailureTest();
     }
 }

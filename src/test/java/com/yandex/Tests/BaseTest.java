@@ -4,6 +4,8 @@ import com.yandex.pages.DriverSingleton;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -13,6 +15,7 @@ public class BaseTest {
     protected static WebDriver driver;
     protected String browserName;
     protected String browserVersion;
+    protected byte[] currentScreenShot;
 
     @BeforeEach
     void setup() {
@@ -29,6 +32,10 @@ public class BaseTest {
 
     @AfterEach
     void teardown() {
+        currentScreenShot = makeScreenShotOnFailureTest();
         DriverSingleton.getInstance().closeDriver();
+    }
+    protected byte[] makeScreenShotOnFailureTest(){
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 }
