@@ -15,7 +15,7 @@ public class BaseTest {
     protected static WebDriver driver;
     protected String browserName;
     protected String browserVersion;
-    protected byte[] currentScreenShot;
+    protected static byte[] currentScreenShot;
 
     @BeforeEach
     void setup() {
@@ -35,7 +35,8 @@ public class BaseTest {
         currentScreenShot = makeScreenShotOnFailureTest();
         DriverSingleton.getInstance().closeDriver();
     }
-    protected byte[] makeScreenShotOnFailureTest(){
+
+    protected byte[] makeScreenShotOnFailureTest() {
         return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 }

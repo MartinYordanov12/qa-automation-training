@@ -16,6 +16,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@ExtendWith(TestWatcherResult.class)
 @Epic("Login Tests")
 @Feature("Login and logout tests")
 
@@ -25,6 +26,7 @@ public class LoginTest extends BaseTest {
     private static final String PASSWORD = "Dieselron";
     private EmailPage emailPage;
     private HomePage homePage;
+
 
     @BeforeEach
     void login() {
@@ -39,7 +41,6 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
-    @ExtendWith(TestWatcherResult.class)
     @Story("User tries to login with valid credentials")
     @Description("Valid login Test with valid username and password")
     @AllureId("1")
@@ -47,11 +48,9 @@ public class LoginTest extends BaseTest {
     void loginTest() {
         emailPage.clickOnDropdownMenu();
         assertTrue(emailPage.isEmailPageOpen(USERNAME));
-        currentScreenShot = makeScreenShotOnFailureTest();
     }
 
     @Test
-    @ExtendWith(TestWatcherResult.class)
     @Story("User tries to logout")
     @Description("Click on logout button and verify that the user is logout")
     @AllureId("2")
@@ -59,10 +58,6 @@ public class LoginTest extends BaseTest {
     void logOut() {
         emailPage.clickOnDropdownMenu();
         emailPage.clickOnLogOutButton();
-
-        /*Allure.addAttachment("Yandex mail image",
-                new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));*/
         Assertions.assertEquals("Google", driver.getTitle());
-        currentScreenShot = makeScreenShotOnFailureTest();
     }
 }
