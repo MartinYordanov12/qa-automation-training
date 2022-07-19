@@ -10,7 +10,7 @@ public class TestWatcherResult implements TestWatcher {
     public void testFailed(ExtensionContext context, Throwable cause) {
         TestWatcher.super.testFailed(context, cause);
         if (context.getExecutionException().isPresent()) {
-            Allure.addByteAttachmentAsync(context.getDisplayName(), "image/png", () -> BaseTest.currentScreenShot);
+            Allure.addByteAttachmentAsync("Screenshot", "image/png", () -> BaseTest.currentScreenShot);
         }
     }
 }

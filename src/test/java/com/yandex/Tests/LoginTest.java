@@ -44,7 +44,6 @@ public class LoginTest extends BaseTest {
     @Story("User tries to login with valid credentials")
     @Description("Valid login Test with valid username and password")
     @AllureId("1")
-    @DisplayName("Login in mail.yandex.com and validate page open")
     void loginTest() {
         emailPage.clickOnDropdownMenu();
         assertTrue(emailPage.isEmailPageOpen(USERNAME));
@@ -54,7 +53,6 @@ public class LoginTest extends BaseTest {
     @Story("User tries to logout")
     @Description("Click on logout button and verify that the user is logout")
     @AllureId("2")
-    @DisplayName("Logout from mail.yandex.com and validate it")
     void logOut() {
         emailPage.clickOnDropdownMenu();
         emailPage.clickOnLogOutButton();
