@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 public class EmailPage extends BasePage {
 
     @FindBy(css = ".user-account_left-name .user-account__name")
-    private WebElement user_account_name;
+    private WebElement accountNameText;
 
     @FindBy(css = ".user-account_left-name")
     private WebElement username_icon;
@@ -22,7 +22,7 @@ public class EmailPage extends BasePage {
     }
 
     public boolean isEmailPageOpen(String username) {
-    return user_account_name.getText().contains(username);
+        return accountNameText.getText().contains(username);
     }
 
     public void clickOnDropdownMenu() {
