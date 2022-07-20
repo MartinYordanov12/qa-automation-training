@@ -56,5 +56,6 @@ public class LoginTest extends BaseTest {
         emailPage.clickOnDropdownMenu();
         emailPage.clickOnLogOutButton();
         Assertions.assertEquals("Google", driver.getTitle());
+
     }
 }
