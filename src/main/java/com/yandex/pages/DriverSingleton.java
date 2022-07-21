@@ -17,7 +17,6 @@ public class DriverSingleton {
 
     private DriverSingleton() {
         WebDriverManager.chromedriver().setup();
-        //driver = new ChromeDriver();
         ChromeOptions chromeOptions = new ChromeOptions();
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setBrowserName("chrome");
