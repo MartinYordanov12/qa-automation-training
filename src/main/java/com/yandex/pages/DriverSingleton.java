@@ -2,51 +2,28 @@ package com.yandex.pages;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Optional;
 
 public class DriverSingleton {
 
     private static DriverSingleton browserInstance = null;
     private WebDriver driver;
-
-    private static final String EDGE = "edge";
-    private static final String FIREFOX = "firefox";
-    private static final String CHROME = "chrome";
-
-
+    private static final String URL = "\"https://oauth-martinyordanov95-0343e:353422ab-62ba-4f22-aadd-532eec6eebbe@ondemand.eu-central-1.saucelabs.com:443/wd/hub\"";
+    private static final String BROWSER_NAME = "chrome";
+    private static final String BROWSER_VERSION = "88";
     private DriverSingleton() throws MalformedURLException {
-        //WebDriverManager.chromedriver().setup();
-        ChromeOptions chromeOptions = new ChromeOptions();
+
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-        desiredCapabilities.setBrowserName("chrome");
+        desiredCapabilities.setBrowserName(BROWSER_NAME);
         desiredCapabilities.setPlatform(Platform.WIN10);
-        desiredCapabilities.setVersion("88");
+        desiredCapabilities.setVersion(BROWSER_VERSION);
 
-        //desiredCapabilities.setVersion("latest");
-        //Map<String, Object> sauceOptions = new HashMap<>();
-        //sauceOptions.put("build", "75");
-        //sauceOptions.put("name", "chrome");
-        //desiredCapabilities.setCapability("sauce:options", sauceOptions);
-
-        URL url = new URL("https://oauth-martinyordanov95-0343e:353422ab-62ba-4f22-aadd-532eec6eebbe@ondemand.eu-central-1.saucelabs.com:443/wd/hub");
+        URL url = new URL(URL);
         driver = new RemoteWebDriver(url, desiredCapabilities);
-        driver = new Augmenter().augment(driver);
-
-
-
-
-        /*try{
-            driver = new RemoteWebDriver(new URL("http://localhost:4444"),desiredCapabilities);
-        }catch (MalformedURLException e){
-            e.printStackTrace();
-        }*/
     }
 
     public WebDriver getDriver() {
